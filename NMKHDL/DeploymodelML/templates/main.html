@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/style.css" />
+
+</head>
+
+<style>
+    label {
+        color: red;
+    }
+    
+    .clear {
+        clear: both
+    }
+</style>
+
+<body>
+    <div class="container mt-3">
+        <h3 style="align-items: center;">Nhập thông tin khách sạn </h3>
+        <form action="{{ url_for('main') }}" method="POST">
+            <div id="c1">
+                <div class="form-group">
+                    <label>Tên khách sạn:</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Độ sạch sẽ (Nhập thang từ 0-10):</label>
+                    <input type="number" class="form-control" name="do_sach_se" required>
+                </div>
+                <div class="form-group">
+                    <label>Sự thoải mái và chất lượng phòng (Nhập thang từ 0-10):</label>
+                    <input type="number" class="form-control"  name="su_thoai_mai" required>
+                </div>
+                <div class="form-group">
+                    <label>Dịch vụ (Nhập thang từ 0-10):</label>
+                    <input type="number" class="form-control" name="dich_vu" required>
+                </div>
+                <div class="form-group">
+                    <label>Vị trí (Nhập thang từ 0-10):</label>
+                    <input type="number" class="form-control" name="vi_tri" required>
+                </div>
+                <div class="form-group">
+                    <label>Tiện nghi (Nhập thang từ 0-10):</label>
+                    <input type="number" class="form-control" name="tien_nghi" required>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng phòng:</label>
+                    <input type="number" class="form-control"  name="so_luong_phong" required>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng nhà hàng:</label>
+                    <input type="number" class="form-control"  name="so_luong_nha_hang" required>
+                </div>
+                <div class="form-group">
+                    <label>Số quán bar:</label>
+                    <input type="number" class="form-control"  name="so_quan_bar" required>
+                </div>
+                <div class="form-group">
+                    <label>Thang máy (1: có, 0: không có):</label>
+                    <input type="number" class="form-control"  name="thang_may" required>
+                </div>
+            </div>
+            <div id="c2">
+                <div class="form-group">
+                    <label>Tiêu chuẩn về an toàn (1: có, 0: không có): </label>
+                    <input type="number" class="form-control" name="an_toan" required>
+                </div>
+                <div class="form-group">
+                    <label>Bể bơi (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="be_boi" required>
+                </div>
+                <div class="form-group">
+                    <label>Bồn tắm (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="bon_tam" required>
+                </div>
+                <div class="form-group">
+                    <label>Ghế Sofa (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="ghe_sofa" required>
+                </div>
+                <div class="form-group">
+                    <label>Phòng Xông Hơi (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="xong_hoi" required>
+                </div>
+                <div class="form-group">
+                    <label>Spa (1: có, 0: không có): </label>
+                    <input type="text" class="form-control"  name="spa" required>
+                </div>
+                <div class="form-group">
+                    <label>Mát-xa (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="mat_xa" required>
+                </div>
+                <div class="form-group">
+                    <label>Phòng tập (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="phong_tap" required>
+                </div>
+                <div class="form-group">
+                    <label>Sân golf (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="san_golf" required>
+                </div>
+                <div class="form-group">
+                    <label>Sân quần vợt (1: có, 0: không có): </label>
+                    <input type="number" class="form-control"  name="san_quan_vot" required>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="btn">
+                <div class="form-group">
+                    <input type="submit" value="Dự đoán" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="result" align="center">
+        {% if result %} {% for variable, value in original_input.items() %}
+        <b>{{ variable }}</b> : {{ value }} {% endfor %}
+        <br>
+        <br>
+        <h1>Predicted Rate Star:</h1>
+        <p style="font-size:50px">{{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

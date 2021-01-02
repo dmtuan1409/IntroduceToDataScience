@@ -1,0 +1,22 @@
+#c1 {
+    width: 300px;
+    height: 850px;
+    background: white;
+    float: left;
+}
+
+#c2 {
+    width: 450px;
+    height: 850px;
+    background: white;
+    float: right;
+}
+
+#btn {
+    width: 450px;
+    height: 50px;
+    background: white;
+}
+.result {
+    align-content: center;
+}
